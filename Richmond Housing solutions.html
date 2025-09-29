@@ -1,0 +1,2157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Richmond Housing Solutions Ltd - Complete Housing Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #000000;      /* Black - main color */
+            --secondary: #d4af37;    /* Gold - accent color */
+            --accent: #333333;       /* Dark gray for secondary elements */
+            --light: #1a1a1a;        /* Dark background */
+            --dark: #f5f5f5;         /* Light text */
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        /* Header */
+        .header {
+            position: fixed;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+            z-index: 1000;
+            padding: 0.8rem 0;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--secondary);
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+            filter: brightness(1.2);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        .nav-menu li a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        .nav-menu li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--secondary);
+            transition: var(--transition);
+        }
+        
+        .nav-menu li a:hover:after {
+            width: 100%;
+        }
+        
+        .nav-menu li a:hover {
+            color: var(--secondary);
+        }
+        
+        .contact-btn {
+            background: var(--secondary);
+            color: var(--primary);
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .contact-btn:hover {
+            background: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        
+        .mobile-menu span {
+            height: 3px;
+            width: 25px;
+            background: var(--secondary);
+            margin-bottom: 4px;
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+        
+        /* Hero Section with Video Background */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+            padding: 0 20px;
+        }
+        
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .video-background video {
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+        
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            z-index: 10;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .cta-btn {
+            padding: 0.9rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-block;
+        }
+        
+        .cta-primary {
+            background: var(--secondary);
+            color: var(--primary);
+        }
+        
+        .cta-primary:hover {
+            background: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .cta-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid var(--secondary);
+        }
+        
+        .cta-secondary:hover {
+            background: var(--secondary);
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Services Banner */
+        .services-banner {
+            background: var(--primary);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .services-banner-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .services-banner h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--secondary);
+        }
+        
+        .services-grid-banner {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .service-item {
+            background: rgba(212, 175, 55, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: var(--transition);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            cursor: pointer;
+        }
+        
+        .service-item:hover {
+            background: rgba(212, 175, 55, 0.2);
+            transform: translateY(-5px);
+            border-color: var(--secondary);
+        }
+        
+        .service-item i {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .service-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Service Category Sections */
+        .service-category {
+            padding: 5rem 2rem;
+            background-color: var(--light);
+        }
+        
+        .category-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .category-title {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        
+        .category-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .category-description {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #ccc;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        /* Slideshow Container - Updated for better image sizing */
+        .slideshow-container {
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+            margin-top: 3rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            height: 400px; /* Fixed height for consistency */
+        }
+        
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+        }
+        
+        .slide {
+            min-width: 100%;
+            position: relative;
+            height: 100%;
+        }
+        
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Changed from cover to contain to show full images */
+            background-color: #000; /* Background for images with transparent areas */
+        }
+        
+        .slide-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            transition: 0.3s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 10;
+        }
+        
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        
+        .prev:hover, .next:hover {
+            background-color: rgba(212, 175, 55, 0.8);
+        }
+        
+        .dots-container {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+        
+        .dot.active, .dot:hover {
+            background-color: var(--secondary);
+        }
+        
+        /* Project Portfolio Section */
+        .project-portfolio {
+            padding: 6rem 2rem;
+            background-color: var(--light);
+        }
+        
+        .portfolio-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .portfolio-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .portfolio-title {
+            font-size: 2.8rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        
+        .portfolio-title:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background-color: var(--secondary);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .portfolio-description {
+            max-width: 800px;
+            margin: 2rem auto 0;
+            color: #ccc;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        /* Project Filter */
+        .project-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .filter-btn {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: #ccc;
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--secondary);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        /* Project Cards Layout */
+        .projects-grid-portfolio {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card-portfolio {
+            background: #222;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        
+        .project-card-portfolio:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+            border-color: var(--secondary);
+        }
+        
+        .project-media {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .project-media img,
+        .project-media video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .project-card-portfolio:hover .project-media img,
+        .project-card-portfolio:hover .project-media video {
+            transform: scale(1.05);
+        }
+        
+        .media-indicator {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        
+        .play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(212, 175, 55, 0.9);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.5rem;
+            opacity: 0;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .project-card-portfolio:hover .play-btn {
+            opacity: 1;
+        }
+        
+        .project-info {
+            padding: 1.5rem;
+        }
+        
+        .project-category {
+            color: var(--secondary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .project-location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #ccc;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .project-location i {
+            color: var(--secondary);
+        }
+        
+        .project-description {
+            color: #aaa;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }
+        
+        .project-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-tag {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--secondary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .project-link:hover {
+            gap: 0.8rem;
+            color: white;
+        }
+        
+        /* Project Modal */
+        .project-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+        
+        .project-modal.active {
+            display: block;
+        }
+        
+        .modal-content {
+            max-width: 1200px;
+            margin: 2rem auto;
+            background: #1a1a1a;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+        
+        .modal-header {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+        
+        .modal-header img,
+        .modal-header video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            z-index: 10;
+        }
+        
+        .modal-close:hover {
+            background: var(--secondary);
+            color: var(--primary);
+        }
+        
+        .modal-body {
+            padding: 2rem;
+        }
+        
+        .modal-title {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .modal-location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #ccc;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .modal-description {
+            color: #ddd;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+        
+        .modal-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .modal-gallery-item {
+            height: 150px;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .modal-gallery-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .modal-gallery-item img,
+        .modal-gallery-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .project-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: rgba(212, 175, 55, 0.05);
+            border-radius: 10px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            color: var(--secondary);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+        
+        /* Blog Section */
+        .blog {
+            padding: 6rem 2rem;
+            background-color: var(--light);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: #ccc;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .blog-card {
+            background: #222;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2);
+            border-color: var(--secondary);
+        }
+        
+        .blog-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .blog-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .blog-card h4 {
+            color: var(--secondary);
+            margin: 1rem 1rem 0.5rem;
+        }
+        
+        .blog-card p {
+            color: #ccc;
+            margin: 0 1rem 1rem;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 6rem 2rem;
+            background-color: var(--light);
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        
+        .contact-item p {
+            color: #ccc;
+        }
+        
+        .contact-item a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .contact-item a:hover {
+            color: var(--secondary);
+        }
+        
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            padding: 1rem;
+            border: 1px solid #444;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: var(--transition);
+            background: #222;
+            color: white;
+        }
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--secondary);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+        }
+        
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: #888;
+        }
+        
+        .submit-btn {
+            background: var(--secondary);
+            color: var(--primary);
+            padding: 1rem;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            margin-top: 1rem;
+        }
+        
+        .submit-btn:hover {
+            background: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--primary);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .footer-section h3 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .footer-section p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            color: #ccc;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-section a:hover {
+            color: var(--secondary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            transition: var(--transition);
+        }
+        
+        .social-link:hover {
+            background: var(--secondary);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+        
+        .animate-on-scroll.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive */
+        @media screen and (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary);
+                flex-direction: column;
+                padding: 1rem 0;
+                text-align: center;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .mobile-menu {
+                display: flex;
+            }
+            
+            .mobile-menu.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            
+            .mobile-menu.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .mobile-menu.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section-title, .category-title {
+                font-size: 2rem;
+            }
+            
+            .services-grid-banner {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+            
+            .slideshow-container {
+                height: 300px; /* Smaller height on mobile */
+            }
+            
+            .projects-grid-portfolio {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-filter {
+                gap: 0.5rem;
+            }
+            
+            .filter-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .modal-content {
+                margin: 1rem;
+            }
+            
+            .modal-header {
+                height: 250px;
+            }
+            
+            .modal-body {
+                padding: 1.5rem;
+            }
+            
+            .modal-title {
+                font-size: 1.6rem;
+            }
+            
+            .modal-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .project-portfolio {
+                padding: 4rem 1rem;
+            }
+            
+            .portfolio-title {
+                font-size: 2.2rem;
+            }
+            
+            .slideshow-container {
+                height: 250px; /* Even smaller on very small screens */
+            }
+            
+            .slide-caption {
+                padding: 0.5rem;
+                font-size: 0.9rem;
+            }
+            
+            .modal-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+    <nav class="nav-container">
+        <div class="logo">
+            <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1757629643/Richmond_Logo_gvvuce.jpg" alt="Richmond Housing Solutions Logo">
+            <span>Richmond Housing Solutions</span>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#project-portfolio">Projects</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="mobile-menu"><span></span><span></span><span></span></div>
+        <a href="#contact" class="contact-btn">Get Quote</a>
+    </nav>
+</header>
+
+<!-- Hero Section with Video Background -->
+<section id="home" class="hero">
+    <div class="video-background">
+        <video autoplay muted loop playsinline>
+            <source src="https://res.cloudinary.com/dnxtuowlp/video/upload/v1757629564/vecteezy_luxury-hotel-lobby-a-spacious-and-elegant-hotel-reception_51896071_htil1d.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+    <div class="hero-content">
+        <h1>Your Complete Housing Partner</h1>
+        <p>From house finishes to interior design, we transform your vision into reality with quality craftsmanship and exceptional service.</p>
+        <div class="cta-buttons">
+            <a href="#services" class="cta-btn cta-primary">Explore Services</a>
+            <a href="#contact" class="cta-btn cta-secondary">Get Free Quote</a>
+        </div>
+    </div>
+</section>
+
+<!-- Services Banner -->
+<section class="services-banner">
+    <div class="services-banner-content">
+        <h2>Our Complete Range of Services</h2>
+        <div class="services-grid-banner">
+            <div class="service-item" data-service="wardrobes">
+                <i class="fas fa-archive"></i>
+                <h3>Wardrobes & Closets</h3>
+            </div>
+            <div class="service-item" data-service="aluminium-glass">
+                <i class="fas fa-window-maximize"></i>
+                <h3>Aluminium & Glass</h3>
+            </div>
+            <div class="service-item" data-service="kitchen-cabinetry">
+                <i class="fas fa-utensils"></i>
+                <h3>Kitchen Cabinetry</h3>
+            </div>
+            <div class="service-item" data-service="flooring">
+                <i class="fas fa-floor-alt"></i>
+                <h3>Flooring</h3>
+            </div>
+            <div class="service-item" data-service="gypsum-ceiling">
+                <i class="fas fa-border-all"></i>
+                <h3>Gypsum Ceiling</h3>
+            </div>
+            <div class="service-item" data-service="interior-decor">
+                <i class="fas fa-paint-roller"></i>
+                <h3>Interior Decor</h3>
+            </div>
+            <div class="service-item" data-service="paintwork">
+                <i class="fas fa-brush"></i>
+                <h3>Paintwork</h3>
+            </div>
+            <div class="service-item" data-service="entertainment-wall">
+                <i class="fas fa-tv"></i>
+                <h3>Entertainment Wall</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Wardrobes & Closets Section -->
+<section id="wardrobes" class="service-category">
+    <div class="container">
+        <div class="category-header">
+            <h2 class="category-title animate-on-scroll">Wardrobes & Closets</h2>
+            <p class="category-description animate-on-scroll">Custom-designed wardrobes and closets that maximize storage space while adding elegance to your bedroom. We create functional and stylish storage solutions tailored to your needs.</p>
+        </div>
+        <div class="slideshow-container animate-on-scroll">
+            <div class="slides">
+                <div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758710443/IMG-20250924-WA0033_qbqgg0.jpg" alt="Wardrobe Design 1">
+                    <div class="slide-caption">Walk-in Wardrobe Design</div>
+                </div>
+                <div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758710419/IMG-20250924-WA0036_mufqxu.jpg" alt="Wardrobe Design 2">
+                    <div class="slide-caption">Sliding Door Wardrobe</div>
+                </div>
+                <div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758710424/IMG-20250924-WA0025_wsynld.jpg" alt="Wardrobe Design 3">
+                    <div class="slide-caption">Built-in Wardrobe Solution</div>
+                </div>
+                <div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758710422/IMG-20250924-WA0024_zhu9dh.jpg" alt="Wardrobe Design 4">
+                    <div class="slide-caption">Modern Wardrobe Interior</div>
+                </div>
+                <div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758710420/IMG-20250924-WA0037_sbhgtf.jpg" alt="Wardrobe Design 5">
+                    <div class="slide-caption">Custom Closet Organization</div>
+                </div>
+            </div>
+            <a class="prev">&#10094;</a>
+            <a class="next">&#10095;</a>
+            <div class="dots-container">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+                <span class="dot" data-slide="3"></span>
+                <span class="dot" data-slide="4"></span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Aluminium & Glass Section -->
+<section id="aluminium-glass" class="service-category">
+    <div class="container">
+        <div class="category-header">
+            <h2 class="category-title animate-on-scroll">Aluminium & Glass</h2>
+            <p class="category-description animate-on-scroll">Premium aluminium and glass solutions for windows, doors, partitions, and facades. We combine durability with aesthetic appeal to enhance your space with natural light and modern design.</p>
+        </div>
+        <div class="slideshow-container animate-on-scroll">
+            <div class="slides">
+                <div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758710355/IMG-20250924-WA0064_gobnak.jpg" alt="Aluminium & Glass 1">
+                </div>
+                <div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758710351/IMG-20250924-WA0062_qrzpme.jpg" alt="Aluminium & Glass 2">
+                </div>
+                <div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758710349/IMG-20250924-WA0069_x4ropm.jpg" alt="Aluminium & Glass 3">
+                </div>
+                <div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758710345/IMG-20250924-WA0067_t1xjoo.jpg" alt="Aluminium & Glass 4">
+                </div>
+                <div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758710353/IMG-20250924-WA0063_dvbsmi.jpg" alt="Aluminium & Glass 5">
+                </div>
+<div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758710357/IMG-20250924-WA0065_ytivcb.jpg" alt="Aluminium & Glass 5">
+                </div>
+            </div>
+            <a class="prev">&#10094;</a>
+            <a class="next">&#10095;</a>
+            <div class="dots-container">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+                <span class="dot" data-slide="3"></span>
+                <span class="dot" data-slide="4"></span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Kitchen Cabinetry Section -->
+<section id="kitchen-cabinetry" class="service-category">
+    <div class="container">
+        <div class="category-header">
+            <h2 class="category-title animate-on-scroll">Kitchen Cabinetry</h2>
+            <p class="category-description animate-on-scroll">Custom kitchen cabinetry designed for functionality and style. We create beautiful, durable kitchen solutions that maximize space and reflect your personal taste.</p>
+        </div>
+        <div class="slideshow-container animate-on-scroll">
+            <div class="slides">
+                <div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758710269/IMG-20250924-WA0046_bn9cqt.jpg" alt="Kitchen Cabinetry 1">
+                </div>
+                <div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758710265/IMG-20250924-WA0045_ojkcxd.jpg" alt="Kitchen Cabinetry 2">
+                </div>
+                <div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758710264/IMG-20250924-WA0044_gzkz4b.jpg" alt="Kitchen Cabinetry 3">
+                </div>
+                <div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758710261/IMG-20250924-WA0043_kk6ktw.jpg" alt="Kitchen Cabinetry 4">
+                </div>
+                <div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758710259/IMG-20250924-WA0042_qdhda8.jpg" alt="Kitchen Cabinetry 5">
+                </div>
+            </div>
+            <a class="prev">&#10094;</a>
+            <a class="next">&#10095;</a>
+            <div class="dots-container">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+                <span class="dot" data-slide="3"></span>
+                <span class="dot" data-slide="4"></span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Flooring Section -->
+<section id="flooring" class="service-category">
+    <div class="container">
+        <div class="category-header">
+            <h2 class="category-title animate-on-scroll">Flooring</h2>
+            <p class="category-description animate-on-scroll">Premium flooring solutions including tiles, hardwood, laminate, and luxury vinyl for every room. We provide durable and beautiful flooring options to suit any style.</p>
+        </div>
+        <div class="slideshow-container animate-on-scroll">
+            <div class="slides">
+                <div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758710165/IMG-20250924-WA0021_ajifx9.jpg" alt="Flooring 1">
+                </div>
+                <div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758710171/IMG-20250924-WA0013_rddz4j.jpg" alt="Flooring 2">
+                </div>
+                <div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758710168/IMG-20250924-WA0023_lyfpfm.jpg" alt="Flooring 3">
+                </div>
+                <div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758710166/IMG-20250924-WA0022_pqcbrg.jpg" alt="Flooring 4">
+                </div>
+                
+            </div>
+            <a class="prev">&#10094;</a>
+            <a class="next">&#10095;</a>
+            <div class="dots-container">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+                <span class="dot" data-slide="3"></span>
+                <span class="dot" data-slide="4"></span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Gypsum Ceiling Section -->
+<section id="gypsum-ceiling" class="service-category">
+    <div class="container">
+        <div class="category-header">
+            <h2 class="category-title animate-on-scroll">Gypsum Ceiling</h2>
+            <p class="category-description animate-on-scroll">Modern gypsum ceiling installation with various designs and finishes to enhance your interior spaces. We offer innovative solutions for residential and commercial properties.</p>
+        </div>
+        <div class="slideshow-container animate-on-scroll">
+            <div class="slides">
+                <div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758710135/IMG-20250924-WA0003_u1wlek.jpg" alt="Gypsum Ceiling 1">
+                </div>
+                <div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758710134/IMG-20250924-WA0002_sjpsn8.jpg" alt="Gypsum Ceiling 2">
+                </div>
+                <div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758710133/IMG-20250924-WA0001_p3xyt3.jpg" alt="Gypsum Ceiling 3">
+                </div>
+                <div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758710129/WhatsApp_Image_2025-09-24_at_00.04.53_0d213aad_gxxqtx.jpg" alt="Gypsum Ceiling 4">
+                </div>
+                <div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758710123/IMG-20250924-WA0007_tzs3io.jpg" alt="Gypsum Ceiling 5">
+                </div>
+            </div>
+            <a class="prev">&#10094;</a>
+            <a class="next">&#10095;</a>
+            <div class="dots-container">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+                <span class="dot" data-slide="3"></span>
+                <span class="dot" data-slide="4"></span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Interior Decor Section -->
+<section id="interior-decor" class="service-category">
+    <div class="container">
+        <div class="category-header">
+            <h2 class="category-title animate-on-scroll">Interior Decor</h2>
+            <p class="category-description animate-on-scroll">Creative interior design solutions that reflect your style and maximize both functionality and aesthetics. We create spaces that inspire and comfort.</p>
+        </div>
+        <div class="slideshow-container animate-on-scroll">
+            <div class="slides">
+                <div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758823456/Interior_1_mkefxd.jpg" alt="Interior Decor 1">
+                </div>
+                <div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758823455/Interior_2_kjv2rb.jpg" alt="Interior Decor 2">
+                </div>
+                <div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758823456/Interior_3_h9dy2u.jpg" alt="Interior Decor 3">
+                </div>
+                <div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758823456/Interior_4_phohoh.jpg" alt="Interior Decor 4">
+                </div>
+                <div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758823457/Interior_5_grppfm.jpg" alt="Interior Decor 5">
+                </div>
+            </div>
+            <a class="prev">&#10094;</a>
+            <a class="next">&#10095;</a>
+            <div class="dots-container">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+                <span class="dot" data-slide="3"></span>
+                <span class="dot" data-slide="4"></span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Paintwork Section -->
+<section id="paintwork" class="service-category">
+    <div class="container">
+        <div class="category-header">
+            <h2 class="category-title animate-on-scroll">Paintwork</h2>
+            <p class="category-description animate-on-scroll">Professional painting services that transform your spaces with precision and quality finishes. We use premium paints and techniques to deliver flawless results for both interior and exterior surfaces.</p>
+        </div>
+        <div class="slideshow-container animate-on-scroll">
+            <div class="slides">
+                <div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758710090/IMG-20250924-WA0009_ub80ew.jpg" alt="Paintwork 1">
+                </div>
+                <div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758710090/IMG-20250924-WA0061_t1op7w.jpg" alt="Paintwork 2">
+                </div>
+                <div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758710090/IMG-20250924-WA0057_sdztak.jpg" alt="Paintwork 3">
+                </div>
+                <div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758710090/IMG-20250924-WA0058_wnalqw.jpg" alt="Paintwork 4">
+                </div>
+                <div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758710090/IMG-20250924-WA0058_wnalqw.jpg" alt="Paintwork 5">
+                </div>
+<div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758710090/IMG-20250924-WA0060_doeev1.jpg" alt="Paintwork 6">
+                </div>
+            </div>
+            <a class="prev">&#10094;</a>
+            <a class="next">&#10095;</a>
+            <div class="dots-container">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+                <span class="dot" data-slide="3"></span>
+                <span class="dot" data-slide="4"></span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Entertainment Wall Section -->
+<section id="entertainment-wall" class="service-category">
+    <div class="container">
+        <div class="category-header">
+            <h2 class="category-title animate-on-scroll">Ultra Modern Entertainment Wall</h2>
+            <p class="category-description animate-on-scroll">Sleek and modern entertainment wall solutions that combine functionality with aesthetic appeal. We create custom media walls that become the centerpiece of your living space.</p>
+        </div>
+        <div class="slideshow-container animate-on-scroll">
+            <div class="slides">
+                <div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758911085/IMG-20250925-WA0025_k92wsn.jpg" alt="Entertainment Wall 1">
+                </div>
+                <div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758911072/IMG-20250925-WA0015_scellx.jpg" alt="Entertainment Wall 2">
+                </div>
+                <div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758911079/IMG-20250925-WA0021_u3y6za.jpg" alt="Entertainment Wall 3">
+                </div>
+                <div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758911079/IMG-20250925-WA0021_u3y6za.jpg" alt="Entertainment Wall 4">
+                </div>
+                <div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758911075/IMG-20250925-WA0018_ge7hyd.jpg" alt="Entertainment Wall 5">
+                </div>
+<div class="slide">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758911086/IMG-20250925-WA0026_s2cx9d.jpg" alt="Entertainment Wall 6">
+                </div>
+            </div>
+            <a class="prev">&#10094;</a>
+            <a class="next">&#10095;</a>
+            <div class="dots-container">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+                <span class="dot" data-slide="3"></span>
+                <span class="dot" data-slide="4"></span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Project Portfolio Section -->
+<section id="project-portfolio" class="project-portfolio">
+    <div class="portfolio-container">
+        <div class="portfolio-header">
+            <h2 class="portfolio-title animate-on-scroll">Our Projects Portfolio</h2>
+            <p class="portfolio-description animate-on-scroll">Explore our completed projects across different locations. Each project showcases our commitment to quality craftsmanship and attention to detail.</p>
+        </div>
+        
+       
+        
+        <div class="projects-grid-portfolio">
+            <!-- Project 1 -->
+            <div class="project-card-portfolio animate-on-scroll" data-category="residential">
+                <div class="project-media">
+                    <video muted loop>
+                        <source src="https://res.cloudinary.com/dnxtuowlp/video/upload/v1758943276/Kitchen_vid_dw2bhs.mp4" type="video/mp4">
+                    </video>
+                    <div class="media-indicator">
+                        <i class="fas fa-video"></i> Video
+                    </div>
+                    <div class="play-btn" data-project="1">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <div class="project-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Homabay, Kenya</span>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <!-- Project 2 -->
+            <div class="project-card-portfolio animate-on-scroll" data-category="commercial">
+                <div class="project-media">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758943277/WhatsApp_Image_2025-09-25_at_21.55.08_2efc1b07_f20jhu.jpg" alt="Office Renovation">
+                    <div class="media-indicator">
+                        <i class="fas fa-image"></i> Image
+                    </div>
+                </div>
+                <div class="project-info">
+                    <div class="project-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Siaya, Kenya</span>
+                    </div>
+                   
+                </div>
+            </div>
+            
+            <!-- Project 3 -->
+            <div class="project-card-portfolio animate-on-scroll" data-category="residential">
+                <div class="project-media">
+                    <video muted loop>
+                        <source src="https://res.cloudinary.com/dnxtuowlp/video/upload/v1758943277/vid_1_nwgvkj.mp4" type="video/mp4">
+                    </video>
+                    <div class="media-indicator">
+                        <i class="fas fa-video"></i> Video
+                    </div>
+                    <div class="play-btn" data-project="3">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <div class="project-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Karen, Nairobi</span>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+            
+            <!-- Project 4 -->
+            <div class="project-card-portfolio animate-on-scroll" data-category="renovation">
+                <div class="project-media">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758943276/WhatsApp_Image_2025-09-25_at_21.54.28_f0d5c50a_f9wl7v.jpg" alt="Bathroom Renovation">
+                    <div class="media-indicator">
+                        <i class="fas fa-image"></i> Image
+                    </div>
+                </div>
+                <div class="project-info">
+                    <div class="project-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Runda, Nairobi</span>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <!-- Project 5 -->
+            <div class="project-card-portfolio animate-on-scroll" data-category="interior">
+                <div class="project-media">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758943276/WhatsApp_Image_2025-09-25_at_21.53.54_e5f6a5ba_ocwuer.jpg" alt="Living Room Design">
+                    <div class="media-indicator">
+                        <i class="fas fa-image"></i> Image
+                    </div>
+                </div>
+                <div class="project-info">
+                    <div class="project-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Kileleshwa, Nairobi</span>
+                    </div>
+                    
+                </div>
+            </div>
+ <!-- Project 6 -->
+            <div class="project-card-portfolio animate-on-scroll" data-category="interior">
+                <div class="project-media">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758943275/WhatsApp_Image_2025-09-25_at_21.50.46_d79c114c_ceo7xw.jpg" alt="Living Room Design">
+                    <div class="media-indicator">
+                        <i class="fas fa-image"></i> Image
+                    </div>
+                </div>
+                <div class="project-info">
+                    <div class="project-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Lurambi, Kakamega</span>
+                    </div>
+                    
+                </div>
+            </div>
+
+ <!-- Project 7 -->
+            <div class="project-card-portfolio animate-on-scroll" data-category="interior">
+                <div class="project-media">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758943274/WhatsApp_Image_2025-09-25_at_21.45.12_3d36487f_yb5wno.jpg" alt="Living Room Design">
+                    <div class="media-indicator">
+                        <i class="fas fa-image"></i> Image
+                    </div>
+                </div>
+                <div class="project-info">
+                    <div class="project-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Milimani, Nairobi</span>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+ <!-- Project 8 -->
+            <div class="project-card-portfolio animate-on-scroll" data-category="interior">
+                <div class="project-media">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758943274/WhatsApp_Image_2025-09-25_at_21.37.01_95d24141_mxghxs.jpg" alt="Living Room Design">
+                    <div class="media-indicator">
+                        <i class="fas fa-image"></i> Image
+                    </div>
+                </div>
+                <div class="project-info">
+                    <div class="project-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Parklands, Nairobi</span>
+                    </div>
+                    
+                </div>
+            </div>
+
+  <div class="project-card-portfolio animate-on-scroll" data-category="interior">
+                <div class="project-media">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758943274/WhatsApp_Image_2025-09-25_at_21.43.41_42fe3663_hnxajd.jpg" alt="Living Room Design">
+                    <div class="media-indicator">
+                        <i class="fas fa-image"></i> Image
+                    </div>
+                </div>
+                <div class="project-info">
+                    <div class="project-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Runda, Nairobi</span>
+                    </div>
+                    
+                </div>
+            </div>
+
+            
+           
+        </div>
+    </div>
+</section>
+
+<!-- Project Modals -->
+<div class="project-modal" id="project-modal-1">
+    <div class="modal-content">
+        <div class="modal-header">
+            <video controls autoplay>
+                <source src="https://res.cloudinary.com/dnxtuowlp/video/upload/v1757629564/vecteezy_luxury-hotel-lobby-a-spacious-and-elegant-hotel-reception_51896071_htil1d.mp4" type="video/mp4">
+            </video>
+            <div class="modal-close" data-modal="1">&times;</div>
+        </div>
+        <div class="modal-body">
+            <h2 class="modal-title">Modern Apartment Transformation</h2>
+            <div class="project-location">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Westlands, Nairobi</span>
+            </div>
+            <p class="modal-description">
+                This complete transformation of a 3-bedroom apartment in Westlands showcases our ability to create modern, functional living spaces. 
+                The project involved comprehensive renovation including custom kitchen cabinetry, hardwood flooring installation, smart lighting integration, 
+                and built-in wardrobes. The client wanted a contemporary aesthetic with practical storage solutions.
+            </p>
+            
+            <div class="project-stats">
+                <div class="stat-item">
+                    <div class="stat-value">3</div>
+                    <div class="stat-label">Months</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">120m²</div>
+                    <div class="stat-label">Area</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">5</div>
+                    <div class="stat-label">Rooms</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">100%</div>
+                    <div class="stat-label">Satisfaction</div>
+                </div>
+            </div>
+            
+            <h3 style="color: var(--secondary); margin-bottom: 1rem;">Project Gallery</h3>
+            <div class="modal-gallery">
+                <div class="modal-gallery-item">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758710422/IMG-20250924-WA0024_zhu9dh.jpg" alt="Project Image 1">
+                </div>
+                <div class="modal-gallery-item">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758710420/IMG-20250924-WA0037_sbhgtf.jpg" alt="Project Image 2">
+                </div>
+                <div class="modal-gallery-item">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758710427/IMG-20250924-WA0026_rthrs7.jpg" alt="Project Image 3">
+                </div>
+                <div class="modal-gallery-item">
+                    <img src="https://res.cloudinary.com/dnxtuowlp/image/upload/v1758710440/IMG-20250924-WA0032_zyxmcj.jpg" alt="Project Image 4">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Blog Section -->
+<section id="blog" class="blog">
+    <div class="container">
+        <h2 class="section-title animate-on-scroll">Our Blog</h2>
+        <p class="section-subtitle animate-on-scroll">Insights, tips, and trends in housing & interior design</p>
+        <div class="blog-grid">
+            <div class="blog-card animate-on-scroll">
+                <img src="https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW50ZXJpb3IlMjBkZXNpZ258ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=600&q=60" alt="Blog 1">
+                <h4>Top Interior Design Trends 2025</h4>
+                <p>Learn the hottest trends for modern homes and how to integrate them in your space.</p>
+            </div>
+            <div class="blog-card animate-on-scroll">
+                <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Zmxvb3Jpbmd8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=600&q=60" alt="Blog 2">
+                <h4>Choosing the Perfect Flooring</h4>
+                <p>Guide to selecting the right flooring for style, comfort, and durability.</p>
+            </div>
+            <div class="blog-card animate-on-scroll">
+                <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Z3lwc3VtJTIwY2VpbGluZ3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=600&q=60" alt="Blog 3">
+                <h4>Gypsum Ceiling Designs for Modern Homes</h4>
+                <p>Discover creative gypsum ceiling designs that can transform your living spaces.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact">
+    <div class="container">
+        <h2 class="section-title animate-on-scroll">Contact Us</h2>
+        <p class="section-subtitle animate-on-scroll">We'd love to hear from you</p>
+        <div class="contact-content">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <p>Email: <a href="mailto:info@richmondhousing.com">info@richmondhousing.com</a></p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <p>Phone: <a href="tel:+254707435464">+254 707 435 464</a></p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <p>Nairobi, Kenya</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">🕒</div>
+                    <p>Mon - Fri: 8:00 AM - 6:00 PM<br>Sat: 9:00 AM - 1:00 PM</p>
+                </div>
+            </div>
+            <form class="contact-form">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <input type="tel" name="phone" placeholder="Your Phone">
+                <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>Richmond Housing Solutions</h3>
+            <p>Transforming your vision into reality with quality and care. Your trusted partner for housing solutions in Kenya.</p>
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#project-portfolio">Projects</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Services</h3>
+            <ul>
+                <li><a href="#wardrobes">Wardrobes & Closets</a></li>
+                <li><a href="#aluminium-glass">Aluminium & Glass</a></li>
+                <li><a href="#kitchen-cabinetry">Kitchen Cabinetry</a></li>
+                <li><a href="#flooring">Flooring</a></li>
+                <li><a href="#gypsum-ceiling">Gypsum Ceiling</a></li>
+                <li><a href="#interior-decor">Interior Decor</a></li>
+                <li><a href="#paintwork">Paintwork</a></li>
+                <li><a href="#entertainment-wall">Entertainment Wall</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Newsletter</h3>
+            <p>Subscribe to our newsletter for updates and promotions.</p>
+            <form>
+                <input type="email" placeholder="Your Email" required>
+                <button type="submit" class="submit-btn">Subscribe</button>
+            </form>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2025 Richmond Housing Solutions Ltd. All Rights Reserved.
+    </div>
+</footer>
+
+<script>
+    // Mobile Menu Toggle
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const navMenu = document.querySelector('.nav-menu');
+
+    mobileMenu.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+    });
+
+    // Scroll Animations
+    const scrollElements = document.querySelectorAll('.animate-on-scroll');
+
+    const elementInView = (el, dividend = 1) => {
+        const elementTop = el.getBoundingClientRect().top;
+        return (
+            elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
+        );
+    };
+
+    const displayScrollElement = (element) => {
+        element.classList.add('active');
+    };
+
+    const hideScrollElement = (element) => {
+        element.classList.remove('active');
+    };
+
+    const handleScrollAnimation = () => {
+        scrollElements.forEach((el) => {
+            if (elementInView(el, 1.25)) {
+                displayScrollElement(el);
+            } else {
+                hideScrollElement(el);
+            }
+        })
+    };
+
+    window.addEventListener('scroll', () => {
+        handleScrollAnimation();
+    });
+
+    // Initialize scroll animations on page load
+    window.addEventListener('load', () => {
+        handleScrollAnimation();
+    });
+
+    // Slideshow Functionality
+    function initSlideshow(slideshowContainer) {
+        const slides = slideshowContainer.querySelector('.slides');
+        const slideCount = slides.querySelectorAll('.slide').length;
+        const prevBtn = slideshowContainer.querySelector('.prev');
+        const nextBtn = slideshowContainer.querySelector('.next');
+        const dots = slideshowContainer.querySelectorAll('.dot');
+        
+        let currentSlide = 0;
+        
+        function goToSlide(n) {
+            currentSlide = (n + slideCount) % slideCount;
+            slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Update dots
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+        
+        function nextSlide() {
+            goToSlide(currentSlide + 1);
+        }
+        
+        function prevSlide() {
+            goToSlide(currentSlide - 1);
+        }
+        
+        // Event listeners
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+        
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => goToSlide(index));
+        });
+        
+        // Auto-advance slides
+        let slideInterval = setInterval(nextSlide, 5000);
+        
+        // Pause on hover
+        slideshowContainer.addEventListener('mouseenter', () => {
+            clearInterval(slideInterval);
+        });
+        
+        slideshowContainer.addEventListener('mouseleave', () => {
+            slideInterval = setInterval(nextSlide, 5000);
+        });
+    }
+    
+    // Initialize all slideshows
+    document.addEventListener('DOMContentLoaded', () => {
+        const slideshowContainers = document.querySelectorAll('.slideshow-container');
+        slideshowContainers.forEach(initSlideshow);
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                // Close mobile menu if open
+                navMenu.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Service banner items scroll to their respective sections
+    document.querySelectorAll('.service-item').forEach(item => {
+        item.addEventListener('click', function() {
+            const serviceId = this.getAttribute('data-service');
+            const targetSection = document.getElementById(serviceId);
+            
+            if (targetSection) {
+                window.scrollTo({
+                    top: targetSection.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Form submission handling
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+    }
+
+    // Project Portfolio Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card-portfolio');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filterValue = button.getAttribute('data-filter');
+                
+                projectCards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 100);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+        
+        // Modal functionality
+        const projectLinks = document.querySelectorAll('.project-link, .play-btn');
+        const modals = document.querySelectorAll('.project-modal');
+        const closeButtons = document.querySelectorAll('.modal-close');
+        
+        projectLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const projectId = link.getAttribute('data-project');
+                const modal = document.getElementById(`project-modal-${projectId}`);
+                
+                if (modal) {
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+        
+        closeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const modalId = button.getAttribute('data-modal');
+                const modal = document.getElementById(`project-modal-${modalId}`);
+                
+                if (modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                    
+                    // Pause any videos in the modal
+                    const videos = modal.querySelectorAll('video');
+                    videos.forEach(video => {
+                        video.pause();
+                    });
+                }
+            });
+        });
+        
+        // Close modal when clicking outside
+        modals.forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                    
+                    // Pause any videos in the modal
+                    const videos = modal.querySelectorAll('video');
+                    videos.forEach(video => {
+                        video.pause();
+                    });
+                }
+            });
+        });
+        
+        // Auto-play videos on card hover
+        const videoCards = document.querySelectorAll('.project-card-portfolio');
+        
+        videoCards.forEach(card => {
+            const video = card.querySelector('video');
+            if (video) {
+                card.addEventListener('mouseenter', () => {
+                    video.play().catch(e => console.log('Auto-play prevented:', e));
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    video.pause();
+                    video.currentTime = 0;
+                });
+            }
+        });
+    });
+</script>
+</body>
+</html>
